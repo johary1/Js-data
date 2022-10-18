@@ -44,7 +44,7 @@ let myData = [
     
 ];
 // Methodes Objects
-document.body.innerHTML = myData
+/*document.body.innerHTML = myData
 .filter((user) => user.admin === false)
 .filter((user) => user.technos.includes("NodeJs"))
 .sort((a,b) => b.age - a.age)
@@ -58,7 +58,7 @@ document.body.innerHTML = myData
     </div>
 
 
-`).join("");
+`).join("");*/
 //console.log(myData[2].technos);
 //-------------------Structure de controle--------------------
 let w = 0;
@@ -174,6 +174,72 @@ console.log(arrNumb.sort((a,b) => a - b)); // trie ordre croissant b - a pour l'
 /*document.body.innerHTML = arrNumb
 .map((number) => `<li> ${number}</li>`)
 .join("");*/
+
+/*************************Date********************** */
+//date classique
+let date = new Date();
+//console.log(date); //date du jour
+//Timestamp
+let timestamp = Date.parse(date);
+//console.log(date.toISOString());
+// voir la doc pour cette méthode toLocaleDateString() pour les différents paramètres
+function dateParser(chaine){
+    let newDate = new Date(chaine).toLocaleDateString("fr-FR",{
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+    });
+    return newDate;
+}
+
+
+// le destructuring
+let moreData = {
+    destVar: ["el1" ,"el2"]
+}
+console.log(moreData.destVar);
+// ecriture en mode destructuring
+const { destVar } = moreData; // === const destVar = moreData.destVar
+console.log(destVar);
+
+let arr5 = [70, 80, 90];
+let[x,y,z] = arr5;
+console.log(x);// 70
+console.log(y);// 80
+console.log(z);// 90
+let iso = date.toISOString();
+const dateDestructuring = (chaine) => {
+    let nDate = chaine.split("T")[0];
+    let [y,m,d] = nDate.split("-");
+    return [d,m,y].join("/"); 
+}
+console.log(dateDestructuring(iso));
+
+// les Datasets
+
+const h3js = document.getElementById("javascript");
+//console.log(h3js.dataset.lang);
+const h3 = document.querySelectorAll("h3");
+//h3.forEach((language) =>console.log(language.dataset.lang));
+
+//les Regex
+let mail ="from_scratch33@gmail.com";
+//console.log(mail.replace(/from/,"de"));
+console.log(mail.match(/SCratch/i)); // le i permet d'avoir d'éviter la sensibilité à la case
+console.log(mail.match(/[zug]/)); // si au moins un des caractères
+console.log(mail.match([123])); // si au moins un des nombres
+// tous les chiffres
+//console.log(mail.match(/\d/));
+// toutes les lettres
+//console.log(mail.match(/[a-z]/));
+//regex email
+console.log(mail.match(/^[\w_-]+@[\w-]+\.[a-z]{2,4}$/i));
+
+let separator = 134646575;
+// separer les chiffres par millier
+console.log(separator.toString().replace(/\B(?=(\d{3})+(?!\d))/g," "));
+
+
 
 
 
